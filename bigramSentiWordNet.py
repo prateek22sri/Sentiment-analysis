@@ -1,13 +1,14 @@
-# http://nlpforhackers.io/sentiment-analysis-intro/
+"""
+This code uses the bigram model for SentiWordNet
+It is based off of the unigram model approach
+reference : http://nlpforhackers.io/sentiment-analysis-intro/
+"""
 
 import pandas as pd
 
 data = pd.read_csv("labeledTrainData.tsv", header=0, delimiter="\t", quoting=3)
 
 # 25000 movie reviews
-# print(data.shape)  # (25000, 3)
-# print(data["review"][0])  # Check out the review
-# print(data["sentiment"][0])
 
 import random
 random.seed(5)
@@ -26,7 +27,6 @@ from nltk.corpus import wordnet as wn
 from nltk.corpus import sentiwordnet as swn
 from nltk import sent_tokenize, word_tokenize, pos_tag
 from nltk.util import ngrams
-from collections import defaultdict, Counter
 
 lemmatizer = WordNetLemmatizer()
 
@@ -156,11 +156,11 @@ def swn_polarity(text):
         else:
             sentiment += unigramSent
 
-    #
+
     # judgment call ? Default to positive or negative
     if not tokens_count:
         return 0
-    #
+
     # sum greater than 0 => positive sentiment
     if sentiment >= 0:
         return 1

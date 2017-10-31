@@ -1,14 +1,13 @@
+# this code is taken from the following website
 # http://nlpforhackers.io/sentiment-analysis-intro/
+# this code uses the unigram approach for SentiWordNet
+# based off of this code we wrote a biram model for SentiWordNet
 
 import pandas as pd
 
 data = pd.read_csv("labeledTrainData.tsv", header=0, delimiter="\t", quoting=3)
 
 # 25000 movie reviews
-# print(data.shape)  # (25000, 3)
-# print(data["review"][0])  # Check out the review
-# print(data["sentiment"][0])
-
 import random
 random.seed(5)
 
