@@ -10,6 +10,8 @@ data = pd.read_csv("labeledTrainData.tsv", header=0, delimiter="\t", quoting=3)
 # print(data["sentiment"][0])
 
 import random
+random.seed(5)
+
 
 sentiment_data = list(zip(data["review"], data["sentiment"]))
 random.shuffle(sentiment_data)
@@ -103,8 +105,8 @@ print(swn_polarity(train_X[3]), train_y[3]) # 1 1
 print(swn_polarity(train_X[4]), train_y[4])  # 1 1`
 
 
-# from sklearn.metrics import accuracy_score
-#
-# pred_y = [swn_polarity(text) for text in test_X]
-#
-# print(accuracy_score(test_y, pred_y))  # 0.6518
+from sklearn.metrics import accuracy_score
+
+pred_y = [swn_polarity(text) for text in test_X]
+
+print(accuracy_score(test_y, pred_y))  # 0.6518
